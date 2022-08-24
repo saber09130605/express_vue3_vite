@@ -1,0 +1,2 @@
+# express_vue3_vite
+这是一个用nodeJS搭建express框架的服务器跟vue3跟vite搭建前端的练习项目
