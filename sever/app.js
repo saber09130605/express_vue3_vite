@@ -5,6 +5,11 @@ const port = 8080
 const path = require("path")
 const multer = require("multer")
 
+const bodyParser = require('body-parser');
+app.use(bodyParser.json({ "limit": "20mb" }));
+// 配置解析 application/x-www-form-urlencoded 格式的中间件
+app.use(express.urlencoded({ extended: false, limit: '20mb' }))
+
 const upload = multer({
     dest: "./public/upload/temp",
 });
@@ -53,27 +58,7 @@ app.use("/article", require("./router/ArticleRouter"))
 // res.redirect --- 重定向
 
 
-const demo = (num) => {
-    if(!arr.length > 0) return ([])
-    var myD1 = []
-    var myD2 = []
-    function demo2(arr,de) {
-        for (let index = 0; index < arr[de].length; index++) {
-            myD1[de] = arr[de][index]
-            if (de != arr.length-1) {
-                demo2(arr,de + 1)
-            } else {
-                myD2.push([...myD1])
-            }
-        }
-    }
-    demo2(arr,0)
-    return myD2
-}
-
-
 //监听打开
 app.listen(port, () => {
-    console.log(demo([[1,2],[a,b]]))
     console.log(`Example app listening on port ${port}`)
 })
